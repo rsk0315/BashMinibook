@@ -1,0 +1,93 @@
+\documentclass[a4paper]{jsarticle}
+
+% symbols
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+
+% color
+\usepackage[dvipdfmx]{color}
+
+% font
+\usepackage{lmodern}
+\newcommand{\textlt}[1]{\texttt{\fontseries{l}\selectfont #1}}
+
+% title-formatting
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\bfseries\rmfamily}
+\titleformat*{\subsection}{\large\bfseries\rmfamily}
+\titleformat*{\subsubsection}{\normalsize\bfseries\rmfamily}
+
+% spacing
+\setlength{\parskip}{.5\baselineskip}
+\makeatletter
+\titlespacing{\section}{0pt}%
+             {.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}{0pt \@plus.3\Cdp}
+\titlespacing{\subsection}{0pt}%
+             {.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}{0pt \@plus.3\Cdp}
+\titlespacing{\subsubsection}{0pt}%
+             {.5\Cvs \@plus.5\Cdp \@minus.2\Cdp}{0pt \@plus.3\Cdp}
+\newcount\ch
+\ch=0\loop
+  \ifnum\ch<256
+  \xspcode \ch=3
+\advance\ch by1
+\repeat
+
+% source-code
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  frame=single,
+  flexiblecolumns=true,
+  upquote=true,
+  keepspaces=true,
+}
+
+\usepackage{enumerate}
+
+% math
+\usepackage{euler}
+\usepackage{amsmath}
+\thinmuskip=6mu
+\SetMathAlphabet{\mathrm}{normal}{T1}{ccr}{m}{n}
+\DeclareSymbolFont{concreteop}{T1}{ccr}{m}{n}
+\makeatletter
+\renewcommand{\operator@font}{\mathgroup\symconcreteop}
+\makeatother
+
+% linking
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage[
+  dvipdfmx,
+  linktocpage=true,
+  plainpages=false,
+]{hyperref}
+\hypersetup{pdftex, colorlinks=true, allcolors=blue}
+
+% framing
+\usepackage{framed}
+\title{
+  {\Huge Bashのれんしゅう}\\
+  {\LARGE 初心者〜中級者向け}
+}
+\author{
+  えび（{\color{cyan}\texttt{rsk0315}}）
+}
+\begin{document}
+\maketitle
+
+\setcounter{section}{-1}
+\section{はじめに}
+Bashで「\texttt{g++ hoge.cpp}」と「\texttt{./a.out}」くらいしか打ったことがない競技プログラマはそれなりに多いのではないでしょうか．もしあなたがそれに該当しているのであれば，それは非常にもったいないことです．Bashを使いこなして周りに一目置かれるようになりましょう！
+
+私としては「デフォルトで入っているシェルを使いこなせると，多くの環境に順応できてよさそうだなぁ」くらいの気持ちです．
+
+% 基本操作
+\input{operations}
+
+% リダイレクト
+%\input{redirections}
+
+% coreutils
+\end{document}

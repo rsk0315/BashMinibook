@@ -1,0 +1,73 @@
+\section{基本操作・キーバインド}
+キーバインドを覚えることはシェルを使いこなすことの第一歩です\footnote{他のあらゆることも第一歩として考えられますが，ここではこれを採用します．}．
+BashのデフォルトのキーバインドはEmacsのキーバインドと似ています．vimmerの方々はこれを機にEmacsのキーバインドを覚えるもよし，Bashのキーバインドもvim-likeにする（後述）もよしです．
+
+\texttt{C-}xは「Ctrlを押しながらキーxを押す」，\texttt{M-}xは「Altを押しながらキーxを押す」ことを指します．\texttt{M-}xが別の（OSなど？）キーバインドと衝突する場合などは「ESCを押してからキーxを押す」ことで代用可能です．\texttt{M-C-}xは「CtrlとAltを押しながらキーxを押す」か「ESCを押してから，Ctrlを押しながらキーxを押す」ことを指します．また，x yは「xを押した後にyを押す」ことを指します．
+なお，「\texttt{SPC}」はスペースキー，「\texttt{RET}」はエンターキー，「\texttt{DEL}」は\textbf{バックスペースキー}を指します．
+
+以下では，次のような形式でキーバインドを上げていきます．
+\begin{itemize}
+\item コマンド名：割り当てられたキー
+  \begin{itemize}
+  \item それに関する説明
+  \end{itemize}
+\end{itemize}
+コマンド名は，それを別のキーに割り当てたいときや，キーバインドを解除したいときに必要になります．
+多くのコマンドは関連する単語の頭文字から来ているので，コマンド名を書いておくと覚えるときの手助けになるかと思って載せています．
+
+\subsection{デフォルトで有効なキーバインド}
+主なものを紹介します．これ以外にもいくつか存在していますが，初心者が覚えておくとよさそうなものに絞りました．
+
+\subsubsection{カーソル移動に関するコマンド}
+\begin{itemize}
+\item \texttt{forward-char}：\texttt{C-f}
+\item \texttt{backward-char}：\texttt{C-b}
+  \begin{itemize}
+  \item 前後に一文字ずつ移動します．個人的には，この程度なら矢印キー（左右）に頼ってもいいかなと思っています．
+  \end{itemize}
+\item \texttt{forward-ward}：\texttt{M-f}
+\item \texttt{backward-word}：\texttt{M-b}
+  \begin{itemize}
+  \item 一単語分移動します．単語は英数字からなる列を指します．
+  \item Ctrlを押しながら矢印キー（左右）で代用可能かもしれません？
+  \end{itemize}
+\item \texttt{beginning-of-line}：\texttt{C-a}
+\item \texttt{end-of-line}：\texttt{C-e}
+  \begin{itemize}
+  \item 行の先頭・末尾に移動します．アルファベットの先頭のAと\textbf{E}ndのEです（は？）
+  \end{itemize}
+\end{itemize}
+\subsubsection{履歴に関するコマンド}
+\begin{itemize}
+\item \texttt{accept-line}：\texttt{RET}
+  \begin{itemize}
+  \item その行の内容を確定させます．これはおそらくみなさんが知っていますね．
+  \end{itemize}
+\item \texttt{previous-history}：\texttt{C-p}
+\item \texttt{next-history}：\texttt{C-n}
+  \begin{itemize}
+  \item 履歴を一つずつ辿ります．矢印キー（上下）に頼ってもいいかなと思っています．
+  \end{itemize}
+\item \texttt{beginning-of-history}：\texttt{M-<}
+\item \texttt{end-of-history}：\texttt{M->}
+  \begin{itemize}
+  \item 最も古い履歴，最も新しい履歴（現在の入力行）へ移動します．
+  \end{itemize}
+\item \texttt{reverse-search-history}：\texttt{C-r}
+\item \texttt{forward-search-history}：\texttt{C-s}
+  \begin{itemize}
+  \item コマンドのインクリメンタル検索をします．
+  \item デフォルトでは，\texttt{C-s}はバインドされていますが\textbf{実行できません}（後述）
+  \end{itemize}
+\item \texttt{non-incremental-reverse-search-history}：\texttt{M-p}
+\item \texttt{non-incremental-forward-search-history}：\texttt{M-n}
+  \begin{itemize}
+  \item インクリメンタルでない検索をします．
+  \item UIがひどくて，検索であることが初見ではわかりませんが，\texttt{:}が出てきていれば正しいです．
+  \end{itemize}
+\item \texttt{operate-and-get-next}：\texttt{C-o}
+  \begin{itemize}
+  \item その行の内容を実行した後，次の行の内容を表示します．一続きのコマンドを再実行したいときに便利です．
+  \end{itemize}
+\end{itemize}
+\subsubsection{テキスト編集に関するコマンド}
